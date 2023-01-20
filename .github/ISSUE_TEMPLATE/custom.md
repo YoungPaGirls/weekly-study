@@ -1,6 +1,6 @@
 ---
 name: Custom issue template
-about: 이번주 공부할 것 적기
+about: 스터디 이슈 작성 템플릿
 title: "[홍길동] 00월 00주차"
 labels: ''
 assignees: ''
