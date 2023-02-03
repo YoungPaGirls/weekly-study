@@ -1,0 +1,59 @@
+name: Weekly Study
+on:
+  schedule:
+    - cron: 0 0 * * 1
+
+jobs:
+  create_issue:
+    name: Create Weekly Study
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Get Month
+        run: echo "MONTH=$(date +'%m')" >> $GITHUB_ENV
+      - name: Get Week
+        run: echo "WEEK=$((($(date +%-d)-1)/7+1))" >> $GITHUB_ENV
+      - name: Create Weekly Study LYW
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          assignees: "zestlee1106"
+          labels: "js, 강의"
+          title: "[이영우] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
+          body: |
+            - [ ] todo
+            - [ ] todo
+            - [ ] todo
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.YOUNGPA_SCHEDULE }}
+      - name: Create Weekly Study KHR
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          assignees: "lin9703"
+          labels: "swift, 책"
+          title: "[김효린] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
+          body: |
+            - [ ] todo
+            - [ ] todo
+            - [ ] todo
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.YOUNGPA_SCHEDULE }}      
+      - name: Create Weekly Study KSY
+        uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
+        with:
+          assignees: "yeonkkk"
+          labels: "java, 강의"
+          title: "[김성연] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
+          body: |
+            - [ ] todo
+            - [ ] todo
+            - [ ] todo
+          pinned: false
+          close-previous: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.YOUNGPA_SCHEDULE }}  
+          
