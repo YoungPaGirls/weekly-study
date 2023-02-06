@@ -1,7 +1,7 @@
 name: Weekly Study
 on:
   schedule:
-    - cron: 0 11 * * 1
+    - cron: 0 1 * * 1
 
 jobs:
   create_issue:
@@ -13,16 +13,14 @@ jobs:
       - name: Get Month
         run: echo "MONTH=$(date +'%m')" >> $GITHUB_ENV
       - name: Get Week
-        run: echo "WEEK=$((($(date +%-d)-1)/7+1))" >> $GITHUB_ENV
+        run: echo "WEEK=$(( 1 + $(date +%V) - $(date -d "$(date -d "-$(($(date +%d)-1)) days")" +%V) ))" >> $GITHUB_ENV
       - name: Create Weekly Study LYW
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "zestlee1106"
           labels: "js, 강의"
-          title: "[이영우] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
+          title: "[이영우] ${{ env.MONTH }}월 0${{ env.WEEK }}주차"
           body: |
-            - [ ] todo
-            - [ ] todo
             - [ ] todo
           pinned: false
           close-previous: false
@@ -36,8 +34,6 @@ jobs:
           title: "[김효린] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
           body: |
             - [ ] todo
-            - [ ] todo
-            - [ ] todo
           pinned: false
           close-previous: false
         env:
@@ -46,11 +42,9 @@ jobs:
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "yeonkkk"
-          labels: "java, 강의"
+          labels: "java, 강의, 알고리즘"
           title: "[김성연] ${{ env.MONTH }}월 0${{env.WEEK}}주차"
           body: |
-            - [ ] todo
-            - [ ] todo
             - [ ] todo
           pinned: false
           close-previous: false
