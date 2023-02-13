@@ -18,7 +18,7 @@ jobs:
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "zestlee1106"
-          labels: "js, 강의"
+          labels: "js, ts, 강의"
           title: "[이영우] ${{ env.MONTH }}월 0${{ env.WEEK }}주차"
           body: |
             - [ ] todo
@@ -26,7 +26,7 @@ jobs:
           close-previous: false
         env:
           GITHUB_TOKEN: ${{ secrets.YOUNGPA_SCHEDULE }}
-      - name: Create Weekly Study KHR
+      - name: Create Weekly Study KHL
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
           assignees: "lin9703"
