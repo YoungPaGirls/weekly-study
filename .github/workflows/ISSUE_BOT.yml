@@ -1,7 +1,7 @@
 name: Weekly Study
 on:
   schedule:
-    - cron: 0 1 * * 1
+    - cron: 0 12 * * 1
 
 jobs:
   create_issue:
@@ -13,7 +13,7 @@ jobs:
       - name: Get Month
         run: echo "MONTH=$(date +'%m')" >> $GITHUB_ENV
       - name: Get Week
-        run: echo "WEEK=$(( 1 + $(date +%V) - $(date -d "$(date -d "-$(($(date +%d)-1)) days")" +%V) ))" >> $GITHUB_ENV
+        run: echo "WEEK=$(( 1 + 10#$(date +%V) - 10#$(date -d "$(date -d "-$((10#$(date +%d)-1)) days")" +%V) ))" >> $GITHUB_ENV
       - name: Create Weekly Study LYW
         uses: imjohnbo/issue-bot@3daae12aa54d38685d7ff8459fc8a2aee8cea98b
         with:
